@@ -5,6 +5,8 @@ const cors = require("cors");
 var corsOptions = {
   origin: "*"
 };
+app.set('views', path.resolve(__dirname, './views'))
+app.set('view engine', 'ejs');
 
 app.use(cors(corsOptions));
 let allowCrossDomain = function(req, res, next) {
