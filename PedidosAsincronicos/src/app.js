@@ -5,6 +5,8 @@ const cors = require("cors");
 var corsOptions = {
   origin: "*"
 };
+
+const mainRouter = require("./routes/mainRouter")
 app.set('views', path.resolve(__dirname, './views'))
 app.set('view engine', 'ejs');
 
@@ -36,15 +38,15 @@ const apiGenresRouter = require('./routes/api/genres')
 //Aquí llamo a la ruta de las api de actors
 const apiActorsRouter = require('./routes/api/actors')
 
-
 app.use(express.static(path.resolve(__dirname, '../public')));
 
+//Rutas dinamiccas
+app.use("/", mainRouter)
 
 //Aquí creo la colección de mis recursos de movies (APIs)
 app.use('/api/movies',apiMoviesRouter);
 app.use('/api/actors',apiActorsRouter);
 app.use('/api/genres',apiGenresRouter);
-
 
 //Activando el servidor desde express
 app.listen('3031', () => console.log('Servidor corriendo en el puerto 3031'));

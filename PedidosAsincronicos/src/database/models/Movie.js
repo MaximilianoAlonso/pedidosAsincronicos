@@ -25,7 +25,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATEONLY,
             allowNull: false
         },
-        length: dataTypes.BIGINT(10),
+        length: {
+            type:  dataTypes.BIGINT(10),
+            allowNull: true
+        },
         genre_id: dataTypes.BIGINT(10)
     };
     let config = {
